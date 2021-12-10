@@ -43,15 +43,17 @@ class HomeRequest extends StatelessWidget {
                         margin: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: TextFormField(
                           decoration: new InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.green, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.black, width: 1.0),
-                              ),
-                              hintText: 'Search Requests'),
+                            prefixIcon: Icon(Icons.search),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.green, width: 2.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black, width: 1.0),
+                            ),
+                            hintText: 'Search Requests',
+                          ),
                         ),
                       ),
                       Container(
@@ -84,7 +86,7 @@ class HomeRequest extends StatelessWidget {
                                 Text(
                                   'Total Requests'.toUpperCase(),
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
@@ -97,6 +99,11 @@ class HomeRequest extends StatelessWidget {
                               ],
                             ),
                           ),
+                          Container(
+                              height: 40,
+                              child: VerticalDivider(
+                                color: Colors.black,
+                              )),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -104,7 +111,7 @@ class HomeRequest extends StatelessWidget {
                                 Text(
                                   'Approved Requests'.toUpperCase(),
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
