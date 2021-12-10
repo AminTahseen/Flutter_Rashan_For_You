@@ -13,7 +13,7 @@ class MainHomePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(10.0),
             child: Text(
-              'Recent Requests',
+              'Recent Requests'.toUpperCase(),
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),

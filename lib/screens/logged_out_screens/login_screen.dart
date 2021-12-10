@@ -198,8 +198,8 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.black,
                   child: TextButton(
                     child: Text(
-                      'سائن ان کریں',
-                      style: TextStyle(color: Colors.white),
+                      'Sign In',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: () => loginAccount(),
                   ),
@@ -213,8 +213,8 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 },
                 child: Text(
-                  'ایک نہیں ہے ؟ اب بنائیں',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  'Don\'t Have One ? Create Now',
+                  style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               )
             ],

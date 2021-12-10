@@ -103,6 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 margin:
                     const EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
                 child: TextFormField(
+                  readOnly: true,
                   controller: userAccountTypeController,
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(),
@@ -154,8 +155,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Colors.black,
                   child: TextButton(
                     child: Text(
-                      'سائن اپ کریں',
-                      style: TextStyle(color: Colors.white),
+                      'Sign Up',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     onPressed: () => createAccount(),
                   ),
@@ -168,8 +169,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   );
                 },
                 child: Text(
-                  'پہلے ہی ایک ہے ؟ لاگ ان کیرن',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  'Already Have One ? Sign In',
+                  style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               )
             ],

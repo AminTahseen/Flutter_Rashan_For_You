@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -48,6 +49,21 @@ class _DrawerMenuState extends State<DrawerMenu> {
     getData();
   }
 
+  Color generateRandomColor1() {
+    // Define all colors you want here
+    const predefinedColors = [Colors.white];
+    Random random = Random();
+    return predefinedColors[random.nextInt(predefinedColors.length)];
+  }
+
+  String getInitials(String bankAccountName) => bankAccountName.isNotEmpty
+      ? bankAccountName
+          .trim()
+          .split(RegExp(' +'))
+          .map((s) => s[0])
+          .take(2)
+          .join()
+      : '';
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -64,8 +80,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
             ),
             accountName: Text(username, style: TextStyle(fontSize: 20)),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500s',
+              backgroundColor: generateRandomColor1(),
+              child: Text(
+                getInitials(username),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             decoration: BoxDecoration(color: Colors.black87),

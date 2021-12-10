@@ -67,8 +67,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        unselectedItemColor: Colors.grey.shade600,
+        elevation: 50,
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.white,
         showSelectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -81,9 +82,9 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_circle,
+              Icons.calculate_rounded,
               color: Colors.green,
-              size: 60,
+              size: 50,
             ),
             label: 'Donate',
           ),
@@ -101,7 +102,6 @@ class _HomePageState extends State<HomePage> {
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        elevation: 10,
       ),
     );
   }

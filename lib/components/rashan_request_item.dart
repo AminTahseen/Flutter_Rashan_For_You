@@ -15,14 +15,14 @@ class RashanRequest extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ListTile(
-              leading: Container(
-                height: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                  child: Image.network(
-                      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'),
+              leading: CircleAvatar(
+                backgroundColor: Colors.black,
+                child: Text(
+                  'RN',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               title: Text(

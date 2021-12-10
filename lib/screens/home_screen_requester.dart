@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rashan_for_you/components/drawer_menu.dart';
+import 'package:rashan_for_you/models/user.model.dart';
 import 'package:rashan_for_you/screens/Bottom_nav_screens/provider/donation_screen.dart';
 import 'package:rashan_for_you/screens/Bottom_nav_screens/requester/home_requests_screen.dart';
+import 'package:rashan_for_you/screens/Bottom_nav_screens/requester/make_request_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreenRequester extends StatefulWidget {
   const HomeScreenRequester({Key key}) : super(key: key);
@@ -14,6 +20,8 @@ class HomeScreenRequester extends StatefulWidget {
 class _HomeScreenRequesterState extends State<HomeScreenRequester> {
   int _selectedIndex = 0;
   String _pageTitle = 'Home';
+  String userType = 'Demo';
+
   static const List<String> _titleList = <String>[
     'Home',
     'Messages',
@@ -21,6 +29,26 @@ class _HomeScreenRequesterState extends State<HomeScreenRequester> {
     'Offers',
     'Profile'
   ];
+  Future getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userJSON = prefs.getString('userJSON');
+    if (userJSON != null) {
+      Map<String, dynamic> userMap =
+          jsonDecode(userJSON) as Map<String, dynamic>;
+      User user = User.fromJson(userMap);
+      setState(() {
+        userType = user.account_type;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomeRequest(),
     Center(
@@ -40,7 +68,7 @@ class _HomeScreenRequesterState extends State<HomeScreenRequester> {
     if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MakeDonationScreen()),
+        MaterialPageRoute(builder: (context) => MakeRequest()),
       );
     } else {
       setState(() {
@@ -66,8 +94,9 @@ class _HomeScreenRequesterState extends State<HomeScreenRequester> {
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        unselectedItemColor: Colors.grey.shade600,
+        elevation: 50,
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.white,
         showSelectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -82,7 +111,7 @@ class _HomeScreenRequesterState extends State<HomeScreenRequester> {
             icon: Icon(
               Icons.health_and_safety_outlined,
               color: Colors.green,
-              size: 60,
+              size: 50,
             ),
             label: 'Request',
           ),
@@ -100,7 +129,6 @@ class _HomeScreenRequesterState extends State<HomeScreenRequester> {
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        elevation: 10,
       ),
     );
   }
